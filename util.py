@@ -60,7 +60,7 @@ def save_path_formatter(args):
 
     for key, key2 in key_map.items():
         value = args_dict[key]
-        if key2 is not '':
+        if key2 != '':
             folder_string.append('{}.{}'.format(key2, value))
         else:
             folder_string.append('{}'.format(value))
