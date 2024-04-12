@@ -20,20 +20,25 @@ url={https://openreview.net/forum?id=rkeu30EtvS }
 ## Folder structure 
 ```
     .
-    ├── documents         # Reproducibility study documentation related files
-    ├── models            # Documentation related files
-    ├── notebooks         # .ipynb notebook files
-    ├── notebooks         # .ipynb notebook files
-    ├── notebooks         # .ipynb notebook files
-    ├── notebooks         # .ipynb notebook files   
-    ├── notebooks         # .ipynb notebook files
-    ├── notebooks         # .ipynb notebook files
-    ├── notebooks         # .ipynb notebook files
-    ├── notebooks         # .ipynb notebook files
-
-    ├── plots             # Visualizations stored location
-    ├── slurm             # Visualizations stored location
-    └── README.md
+    ├───documents           # reproducibility study documentation related files
+    ├───models              # model architecture implementations
+    ├───original_paper      # documents from original study
+    ├───results             # results obtained from reproducibility study
+    ├───segmentation        # Semantic Segmentation using "Cityscapes" dataset 
+    │   arg_parser.py
+    │   cs895_project.ipynb
+    │   LICENSE
+    │   main.py
+    │   main_imagenet.py
+    │   net_util.py
+    │   README.md
+    │   requirements.txt
+    │   single_experiment_cifar10.sh
+    │   single_experiment_cifar100.sh
+    │   single_experiment_net_deconv_cifar10.sh
+    │   single_experiment_net_deconv_cifar100.sh
+    │   util.py
+    └   README.md
 ```
 
 
@@ -79,7 +84,7 @@ There were a few minor module import issues and some Python library version conf
 4. Created a Jupyter Notebook `cs895_project.ipynb` to test the scripts and 
 5. Used bash scripts to schedule slurm jobs and passed related arguments for below parameters:  
     - prameters
-        - architecture - neural network architecture name [ fgvfsvs ]
+        - architecture - neural network architecture name [ vgg16, resnet18d, preact, densenet121, resnext, mobilev2, dpn, pnasnetA, senet, efficient ]
         - epochs - [ 1, 20, 100 ]
         - o -- slurm output fikleename
     - bash commands 
