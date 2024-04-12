@@ -1,5 +1,5 @@
 # Rep. Network Deconvolution [![DOI](https://img.shields.io/badge/Reproducibility_Study-Network_Deconvolution-blue)](https://github.com/yechengxi/deconvolution)
-This repository is a reproducibility study of [Network Deconvolution](https://github.com/yechengxi/deconvolution); the original work proposed by Ye et al. (2020). This Reproducibility Study is conducted as a part of course requirement for CS895 - Deep Learning Fundamentals course at CS ODU The project requires
+This repository is a reproducibility study of [Network Deconvolution](https://github.com/yechengxi/deconvolution); the original work proposed by Ye et al. (2020). This reproducibility study is conducted as a part of course requirement for CS895 - Deep Learning Fundamentals course at CS ODU The project requires
 Python GPU-based processing capabilities, TensorFlow and
 PyTorch frameworks." 
 
@@ -88,11 +88,11 @@ There were a few minor module import issues and some Python library version conf
         - epochs - [ 1, 20, 100 ]
         - o -- slurm output fikleename
     - bash commands 
-        - for bacth normalization with CIFAR-10 dataset [ `single_experiment_cifar10.sh` ]
+        - for batch normalization with CIFAR-10 dataset [ `single_experiment_cifar10.sh` ]
             ```
             sbatch --export=ALL,architecture='pnasnetA',epochs=100 -o pnasnetA_cifar100_ep100_att2_BN.txt single_experiment_cifar10.sh
             ```
-        - for bacth normalization with CIFAR-100 dataset [ `single_experiment_cifar100.sh` ]
+        - for batch normalization with CIFAR-100 dataset [ `single_experiment_cifar100.sh` ]
             ```
             sbatch --export=ALL,architecture='pnasnetA',epochs=100 -o pnasnetA_cifar100_ep100_att2_BN.txt single_experiment_cifar100.sh
             ```
