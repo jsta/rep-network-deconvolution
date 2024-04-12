@@ -1,16 +1,38 @@
-# Citation Contexts for AI Reproducibility [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10895748.svg)](https://doi.org/10.5281/zenodo.10895748)
-This repository is for the proof of concept project for identifying the correlation between citation context of citing papers and the reproducibility of cited paper (original paper) within the field  of Artificial Intelligence. The repository contains the code and the data to reproduce results for the work titled: <b>"Can citations tell us about a paper’s reproducibility? A
-case study of machine learning papers.</b> The project requires
-Python GPU-based processing capabilities, TensorFlow, Keras and
+# Rep. Network Deconvolution [![DOI](https://img.shields.io/badge/Reproducibility_Study-Network_Deconvolution-blue)](https://github.com/yechengxi/deconvolution)
+This repository is a reproducibility study of [Network Deconvolution](https://github.com/yechengxi/deconvolution); the original work proposed by Ye et al. (2020). This Reproducibility Study is conducted as a part of course requirement for CS895 - Deep Learning Fundamentals course at CS ODU The project requires
+Python GPU-based processing capabilities, TensorFlow and
 PyTorch frameworks." 
+
+README file of the original study is available at `original_paper/README.md`. 
+
+## Original Paper
+```
+@inproceedings{
+Ye2020Network,
+title={Network Deconvolution},
+author={Chengxi Ye and Matthew Evanusa and Hua He and Anton Mitrokhin and Tom Goldstein and James A. Yorke and Cornelia Fermuller and Yiannis Aloimonos},
+booktitle={International Conference on Learning Representations},
+year={2020},
+url={https://openreview.net/forum?id=rkeu30EtvS }
+
+```
 
 ## Folder structure 
 ```
     .
-    ├── data              # All the data files required to reproduce the results
-    ├── documents         # Documentation related files
+    ├── documents         # Reproducibility study documentation related files
+    ├── models            # Documentation related files
     ├── notebooks         # .ipynb notebook files
+    ├── notebooks         # .ipynb notebook files
+    ├── notebooks         # .ipynb notebook files
+    ├── notebooks         # .ipynb notebook files   
+    ├── notebooks         # .ipynb notebook files
+    ├── notebooks         # .ipynb notebook files
+    ├── notebooks         # .ipynb notebook files
+    ├── notebooks         # .ipynb notebook files
+
     ├── plots             # Visualizations stored location
+    ├── slurm             # Visualizations stored location
     └── README.md
 ```
 
@@ -18,65 +40,77 @@ PyTorch frameworks."
 ## Dependencies ##
 All the required dependencies included in the `requirements.txt` file. To prevent dependency conflicts, <b>refrain from manually installing TensorFlow and Keras</b>. When installing keras-nlp via requirements.txt, it will automatically download and install the appropriate TensorFlow and Keras versions. Codebase is tested on below python library versions.
 
-* tensorflow==2.16.1
-* keras==3.1.1
-* keras-core==0.1.7
-* keras-nlp==0.8.2
-* torch==1.13.0
-* transformers==4.39.2
-* pandas==2.0.3
-* ipykernel==6.29.3
-* openpyxl==3.1.2
-* numpy==1.24.3
-* scikit-learn==1.3.1
+* scipy==1.10.1
+* numpy==1.23.5
+* tensorboard==2.12.0
+* matplotlib=3.7.1
+* torch==1.13
+* torchvision==0.14.1
+* tensorflow==2.12.0
 
-## Dataset ##
-Avaialable in the `data` directory
+## Reproducibility Approach ##
+We focused on the reported data from table 1 in the original study for both Batch Normalization and Network Deconvolution scenarios.
 
-![alt text](documents/citaion_contexts_relationships.png "Citation Contexts for AI Reproducibility - Dataset")
+![alt text](documents/rep_study_approach.png "Reproduced Results")
 
+## Resolved minor issues ##
+There were a few minor module import issues and some Python library version conflicts in the codebase, and below is how we resolved them.
+* No module named `torchvision.models.utils`
+    - Error with pytorch 1.10+ versions. Resolved by changing 
+        ```
+        from torchvision.models.utils import load_state_dict_from_url
+            to
+        from torch.hub import load_state_dict_from_url
+        ```
+* NameError: name 'DPN92' is not defined
+    - A Model import error. Resolved by importing the models to main.py
+* NameError: name 'PreActResNet18' is not defined
+    - A Model import error. Resolved by importing the models to main.py
 
-## Steps ##
+## Steps we have followed to reproduce the original study ##
 
-1. Clone the GitHub repository https://github.com/lamps-lab/ccair-ai-reproducibility
+1. Clone the GitHub repository https://github.com/yechengxi/deconvolution
 2. Create a python virtual environment https://docs.python.org/3/library/venv.html
 3. Activate venv, navigate to the cloned repository and install the dependencies using `requirements.txt` file
 
     ```
         pip install -r requirements.txt
     ```
-4. Use either the available data in `data` directory or create the datasets from scratch by following the steps in below jupyter notebooks in sequential order (available inside `notebooks` directory).
-    - R_001_Creating_the_RS_superset.ipynb
-    - R_001_Extract_Citing_Paper_Details_from_S2GA.ipynb
-    - R_001_JSON_to_csv_contexts_conversion.ipynb
-
-    Note: <i>If you are using the existing data in the `data` directory, you can skip this step.</i>
-
-5. After the environment setup, execute the below jupyter notebooks in sequential order (available inside 'notebooks' directory).
-
-    - **R_001_M1_to_M5_Sentiment_Analysis_models.ipynb**
-        - This will generate the performance measures for the selected five open-source multiclass sentiment analysis models (Table 3).
-
-    - **R_001_M6_3_class_sentiment_classification.ipynb**
-        - This will custom train a multiclass DistilBert sentiment classifier and perform 5-fold cross validation for model evaluation. At the end of model evaluation, this generates the predicted class labels {'negative','neutral','positive'} for all 41244 citation contexts (Table 4).
-
-    - **R_001_M7_1_binary_classification_related_not_related.ipynb**
-        - This will custom train a binary classifier and perform 5-fold cross validation for model evaluation. At the end of model evaluation, this generates the predicted class labels {'related','not-related'} for all 41244 citation contexts (Table 4).
-
-    - **R_001_M7_2_binary_sentiment_classification.ipynb**
-        - This will custom train a binary classifier and perform 5-fold cross validation for model evaluation. At the end of model evaluation, this generates the predicted class labels {'negative','positive'} for only reproducibility related citation contexts filtered from M7.1 (Table 4).
-
-    - **R_001_Visualizations.ipynb**
-        - This will parse all the data files created by previous notebooks and generate the results in Table 2, figure 3, and Figure 4.
-
-
-<!-- ## Citation ## -->
+4. Created a Jupyter Notebook `cs895_project.ipynb` to test the scripts and 
+5. Used bash scripts to schedule slurm jobs and passed related arguments for below parameters:  
+    - prameters
+        - architecture - neural network architecture name [ fgvfsvs ]
+        - epochs - [ 1, 20, 100 ]
+        - o -- slurm output fikleename
+    - bash commands 
+        - for bacth normalization with CIFAR-10 dataset [ `single_experiment_cifar10.sh` ]
+            ```
+            sbatch --export=ALL,architecture='pnasnetA',epochs=100 -o pnasnetA_cifar100_ep100_att2_BN.txt single_experiment_cifar10.sh
+            ```
+        - for bacth normalization with CIFAR-100 dataset [ `single_experiment_cifar100.sh` ]
+            ```
+            sbatch --export=ALL,architecture='pnasnetA',epochs=100 -o pnasnetA_cifar100_ep100_att2_BN.txt single_experiment_cifar100.sh
+            ```
+        - for network deconvolution with CIFAR-10 dataset [ `single_experiment_net_deconv_cifar10.sh` ]
+            ```
+            sbatch --export=ALL,architecture='pnasnetA',epochs=100 -o pnasnetA_cifar100_ep100_att2_BN.txt single_experiment_net_deconv_cifar10.sh
+            ```
+        - for network deconvolution with CIFAR-100 dataset [ `single_experiment_net_deconv_cifar100.sh` ]
+            ```
+            sbatch --export=ALL,architecture='pnasnetA',epochs=100 -o pnasnetA_cifar100_ep100_att2_BN.txt single_experiment_net_deconv_cifar100.sh
+            ```
+6. Stored findings and graphs inside `results` directory 
+    - rep_values.xlsx
+    - graphs
+        - densenet121-ep20-cifar10.png
+        - resnet18-ep20-cifar10.png
+        - vgg16-ep20-cifar10.png
 
 ```BibTeX
 
 ```
 
 ```
-Rochana R. Obadage
-03/29/2024
+Kumushini Thennakoon | Rochana R. Obadage
+04/11/2024
 ```
