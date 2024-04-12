@@ -43,7 +43,7 @@ url={https://openreview.net/forum?id=rkeu30EtvS }
 
 
 ## Dependencies ##
-All the required dependencies included in the `requirements.txt` file. To prevent dependency conflicts, <b>refrain from manually installing TensorFlow and Keras</b>. When installing keras-nlp via requirements.txt, it will automatically download and install the appropriate TensorFlow and Keras versions. Codebase is tested on below python library versions.
+All the required dependencies included in the `requirements.txt` file. Codebase is tested on below python library versions.
 
 * scipy==1.10.1
 * numpy==1.23.5
