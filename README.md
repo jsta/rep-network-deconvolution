@@ -86,7 +86,7 @@ There were a few minor module import issues and some Python library version conf
     - prameters
         - architecture - neural network architecture name [ vgg16, resnet18d, preact, densenet121, resnext, mobilev2, dpn, pnasnetA, senet, efficient ]
         - epochs - [ 1, 20, 100 ]
-        - o -- slurm output fikleename
+        - o -- slurm output filename
     - bash commands 
         - for batch normalization with CIFAR-10 dataset [ `single_experiment_cifar10.sh` ]
             ```
