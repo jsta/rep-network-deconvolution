@@ -157,7 +157,7 @@ There were a few minor module import issues and some Python library version conf
     ```
         pip install -r requirements.txt
     ```
-4. Created a Jupyter Notebook `cs895_project.ipynb` to test the scripts 
+4. Created a Jupyter Notebook `deconv_rep.ipynb` to test the scripts 
 5. To reproduce results from Table 1 (`main.py`), we used bash scripts to schedule slurm jobs and passed related arguments for below parameters: 
     - prameters
         - architecture - neural network architecture name [ vgg16, resnet18d, preact, densenet121, resnext, mobilev2, dpn, pnasnetA, senet, efficient ]
@@ -199,7 +199,7 @@ There were a few minor module import issues and some Python library version conf
         ```
        sbatch -o imagenet_single_experiment_resnet_deconv.txt imagenet_single_experiment_resnet_deconv.sh
         ```
-    > VGG-16
+    > VGG-11
     - for original implementation with ImageNet dataset [ `imagenet_single_experiment_vgg11_original.sh` ]
         ```
        sbatch -o imagenet_single_experiment_vgg11_original.txt imagenet_single_experiment_vgg11_original.sh
