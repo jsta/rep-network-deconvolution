@@ -225,6 +225,19 @@ There were a few minor module import issues and some Python library version conf
         - resnet18-ep20-cifar10.png
         - vgg16-ep20-cifar10.png
 
+## To reproduce results of our reproducibility study ##
+
+1. Clone the GitHub repository https://github.com/rochanaro/cs895-deconvolution.git
+2. Download Imagenet and preapre the dataset according to the steps mentioned in previous section "Preparing Imagenet dataset to reproduce results from Table 2" 
+3. Install python library requirements
+    ```
+        pip install -r requirements.txt
+    ```
+4. Test the scripts by executing cells in  `deconv_rep.ipynb` notebook
+5. For Table 1 results, run the provided bash scripts passsing appropriate model parameters mentioned in section "Steps we have followed to reproduce the original study" list item 5
+6. For Table 2 results, run the provided bash scripts as mentioned in section "Steps we have followed to reproduce the original study" list item 6
+
+
 ```BibTeX
 
 ```
