@@ -95,7 +95,7 @@ parser.add_argument('--multiprocessing-distributed', action='store_true',
 parser.add_argument('--dataset', default='imagenet', help='dataset')
 
 parser.add_argument('--tensorboard', default=True, type=distutils.util.strtobool, help='use tensorboard')
-parser.add_argument('--save-plot', default=True, type=distutils.util.strtobool, help='save plots with matplotlib')
+parser.add_argument('--save-plot', default=False, type=distutils.util.strtobool, help='save plots with matplotlib')
 
 # for deconv
 parser.add_argument('--deconv', default=False, type=distutils.util.strtobool, help='use deconv')
@@ -623,7 +623,12 @@ def accuracy(output, target, topk=(1,)):
 
         res = []
         for k in topk:
-            correct_k = correct[:k].view(-1).float().sum(0, keepdim=True)
+            # correct_k = correct[:k].view(-1).float().sum(0, keepdim=True)
+            correct_k = correct[:k].contiguous().view(-1).float().sum(0, keepdim=True)
+
+            # flattened_x = x.view(x.size(0), -1)
+            # flattened_x = x.contiguous().view(x.size(0), -1) corrected
+
             res.append(correct_k.mul_(100.0 / batch_size))
         return res
 
@@ -658,7 +663,8 @@ def save_path_formatter(args):
 
     for key, key2 in key_map.items():
         value = args_dict[key]
-        if key2 is not '':
+        # if key2 is not '':
+        if key2 != '':
             folder_string.append('{}:{}'.format(key2, value))
         else:
             folder_string.append('{}'.format(value))
