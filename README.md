@@ -227,7 +227,7 @@ There were a few minor module import issues and some Python library version conf
 
 ## To reproduce results of our reproducibility study ##
 
-1. Clone the GitHub repository https://github.com/rochanaro/cs895-deconvolution.git
+1. Clone the GitHub repository https://github.com/lamps-lab/rep-network-deconvolution.git
 2. Download Imagenet and preapre the dataset according to the steps mentioned in previous section "Preparing Imagenet dataset to reproduce results from Table 2" 
 3. Install python library requirements
     ```
@@ -244,5 +244,5 @@ There were a few minor module import issues and some Python library version conf
 
 ```
 Rochana R. Obadage | Kumushini Thennakoon 
-05/25/2024
+09/19/2024
 ```
