@@ -56,7 +56,7 @@ All the required dependencies included in the `requirements.txt` file. Codebase 
 * numpy==1.23.5
 * tensorboard==2.12.0
 * matplotlib=3.7.1
-* torch==1.13
+* torch==1.13.1
 * torchvision==0.14.1
 * tensorflow==2.12.0
 
