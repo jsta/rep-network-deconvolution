@@ -14,6 +14,8 @@ cudnn.benchmark=True
 from functools import partial
 import csv
 
+#lemos
+import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
 
@@ -266,6 +268,9 @@ if __name__ == '__main__':
         net = ResNet50(num_classes=args.num_outputs,deconv=args.deconv,delinear=args.delinear,channel_deconv=args.channel_deconv)
 
     if args.arch=='preact':
+        #newly added import line
+        from models.preact_resnet import *
+        # PreActResNet18 PreActResNet34
         net = PreActResNet18(num_classes=args.num_outputs,deconv=args.deconv,delinear=args.delinear,channel_deconv=args.channel_deconv)
 
     # net = GoogLeNet()
@@ -304,13 +309,16 @@ if __name__ == '__main__':
         net = MobileNetV2(num_classes=args.num_outputs,deconv=args.deconv,delinear=args.delinear,channel_deconv=args.channel_deconv)
     # net = MobileNet()
     if args.arch == 'dpn':
+        from models.dpn import *
         net = DPN92(num_classes=args.num_outputs,deconv=args.deconv,delinear=args.delinear,channel_deconv=args.channel_deconv)
     # net = ShuffleNetG2()
 
     if args.arch == 'senet':
+        from models.senet import *
         net = SENet18(num_classes=args.num_outputs,deconv=args.deconv,delinear=args.delinear,channel_deconv=args.channel_deconv)
 
     if args.arch == 'pnasnetA':
+        from models.pnasnet import *
         net = PNASNetA(num_classes=args.num_outputs,deconv=args.deconv,delinear=args.delinear,channel_deconv=args.channel_deconv)
     if args.arch == 'pnasnetB':
         net = PNASNetB(num_classes=args.num_outputs,deconv=args.deconv,delinear=args.delinear,channel_deconv=args.channel_deconv)
